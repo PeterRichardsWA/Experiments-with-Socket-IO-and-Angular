@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title>Richards Chat System</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#chatroom').hide();
+			// since socket defined inside document.ready we need to keep socket stuff in this scope.
+			// all files above are referenced in static dir
+            var socket = io.connect(); // connect to our servers socket.
+            // we'll write all the socket stuff after the above line!
+       
+	   		$('button#ok').click(function (){
+	    		//socket.emit('button_clicked', {reason: "because I want to learn about sockets!"});
+				$('#login').hide();
+				$('#chatroom').fadeIn(300);
+			});
+
+			socket.on('server_response', function (data) {
+	    		$('#message').html('The server says: ' + data.response);
+			});
+
+			socket.on('my_emit_event', function (data) {
+	    		$('#message').html(data.response);
+			});
+       });
+     
+	</script>
+</head>
+<body>
+	
+	<div id='container'>
+		
+		<div id='login'>
+			<fieldset>
+				<legend>Login Here</legend>
+				<label for='name'>Your Name</label><br>
+				<input type='text' name='name' class='inptxt' size=40 maxlength=40><br>
+				<div id='entbuttons'>
+					<button id='cancel'>CANCEL</button>&nbsp;<button id='ok'>GO CHAT</button>
+				</div>
+			</fieldset>
+		</div>
+
+		<div id='chatroom'>
+			<div id='chathistory'>
+			5:11pm - John: This is the first chat line on this site.
+
+
+			</div>
+			<div>
+				<input type='text' size=65 id='chatline' name='chatline' value='' placeholder='Chat here...'>&nbsp;
+				<button>POST</button>
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

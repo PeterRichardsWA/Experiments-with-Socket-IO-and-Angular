@@ -1,0 +1,49 @@
+<html ng='myChat'>
+<head>
+	<title>Richards Chat System</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script type="text/javascript" src="scripts/externals/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/externals/angular-route.min.js"></script>
+	<script type="text/javascript" src="scripts/externals/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+	<script type="text/javascript" src="scripts/server.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			// since socket defined inside document.ready we need to keep socket stuff in this scope.
+			// all files above are referenced in static dir
+            var socket = io.connect(); // connect to our servers socket.
+            // we'll write all the socket stuff after the above line!
+       
+	   		$('button#ok').click(function (){
+	    		//socket.emit('button_clicked', {reason: "because I want to learn about sockets!"});
+				$('#login').hide();
+				$('#chatroom').fadeIn(300);
+			});
+
+			socket.on('server_response', function (data) {
+	    		$('#message').html('The server says: ' + data.response);
+			});
+
+			socket.on('my_emit_event', function (data) {
+	    		$('#message').html(data.response);
+			});
+       });
+     
+	</script>
+</head>
+<body>
+	
+	<div id='container'>
+		
+	<div ng-app='myApp'>
+        <div ng-view=''>
+        </div>
+    </div>
+
+	</div>
+
+</body>
+</html>

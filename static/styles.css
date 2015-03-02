@@ -1,0 +1,55 @@
+* {
+	font-family: 'helvetica neu', 'Trebuchet ms', verdana, arial;
+	font-size: 9pt;
+}
+#container {
+	margin: 0;
+	padding: 0;
+}
+#head {
+
+}
+#login {
+	width: 300px;
+	margin: 0 auto;
+	min-height: 200px;	
+}
+.inptxt {
+	font-size: 9pt;
+	border: 2px solid #8e8e8e;
+	box-shadow: 4px 4px #8e8e8e;
+	border-radius: 3px;
+}
+#chatline {
+	font-size: 12pt;
+	border: 2px solid #8e8e8e;
+	box-shadow: 4px 4px #8e8e8e;
+	border-radius: 3px;
+}
+button {
+	font-size: 9pt;
+	border: 0;
+	box-shadow: 4px 4px #8e8e8e;
+	border-radius: 3px;
+	color: #ffffff;
+	background-color: #2b821c;
+}
+#entbuttons {
+	text-align: right;
+	padding: 5px 10px 5px 0px;
+}
+#chatroom {
+	margin: 0 auto;
+	width: 600px;
+	padding: 5px;
+	border: 4px solid #11340b;
+	visibility: none;
+}
+#chathistory {
+	margin: 0 auto;
+	font-size: 10pt;
+	border: 2px solid #8e8e8e;
+	min-height: 500px;
+	width: 580px;
+	margin-bottom: 10px;
+}
